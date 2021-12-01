@@ -1,12 +1,3 @@
-const express = require("express");
-const router = express.Router();
-
-const { getProductsController,
-    addProductController,
-    getSingleProductController,
-    buyProductController, updateProductControler,
-    getSoldProductsController } = require("./product-controller")
-
 /**
  * @swagger
  * /api/product/products:
@@ -45,8 +36,6 @@ const { getProductsController,
 *       500:
 *         description: Server error
 */
-
-router.route("/products").get(getProductsController).post(addProductController);
 /**
  * @swagger
  * /api/product/products/{_id}:
@@ -65,7 +54,7 @@ router.route("/products").get(getProductsController).post(addProductController);
  *     responses:
  *       200:
  *         description: A single product
- *  
+ *
  *       500:
  *         description: Server Error
  */
@@ -119,7 +108,6 @@ router.route("/products").get(getProductsController).post(addProductController);
  *       500:
  *         description: Server error
  */
-router.route("/products/:id").get(getSingleProductController).put(buyProductController).patch(updateProductControler);
 
 /**
  * @swagger
@@ -132,13 +120,9 @@ router.route("/products/:id").get(getSingleProductController).put(buyProductCont
  *       - application/json
  *     responses:
  *       200:
- *         description: An array of Products
+ *         description: An array of Products sold
  *         schema:
  *           $ref: '#/components/schemas/Reviews'
  *       500:
  *         description: SERVER ERROR
  */
-
-router.route("/purchase").get(getSoldProductsController)
-
-module.exports = router;
